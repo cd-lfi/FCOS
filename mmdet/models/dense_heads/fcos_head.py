@@ -93,12 +93,20 @@ class FCOSHead(AnchorFreeHead):
         self.center_sample_radius = center_sample_radius
         self.norm_on_bbox = norm_on_bbox
         self.centerness_on_reg = centerness_on_reg
+        # super().__init__(
+        #     num_classes,
+        #     in_channels,
+        #     loss_cls=loss_cls,
+        #     loss_bbox=loss_bbox,
+        #     norm_cfg=norm_cfg,
+        #     init_cfg=init_cfg,
+        #     **kwargs)
         super().__init__(
             num_classes,
             in_channels,
             loss_cls=loss_cls,
             loss_bbox=loss_bbox,
-            norm_cfg=norm_cfg,
+            norm_cfg=None,
             init_cfg=init_cfg,
             **kwargs)
         self.loss_centerness = build_loss(loss_centerness)

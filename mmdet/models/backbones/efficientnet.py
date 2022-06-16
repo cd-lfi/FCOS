@@ -258,7 +258,7 @@ class EfficientNet(BaseModule):
                  frozen_stages=0,
                  conv_cfg=dict(type='Conv2dAdaptivePadding'),
                  norm_cfg=dict(type='BN', eps=1e-3),
-                 act_cfg=dict(type='Swish'),
+                 act_cfg=dict(type='ReLU'),
                  norm_eval=False,
                  with_cp=False,
                  init_cfg=[
@@ -354,7 +354,7 @@ class EfficientNet(BaseModule):
                     se_cfg = dict(
                         channels=mid_channels,
                         ratio=expand_ratio * se_ratio,
-                        act_cfg=(self.act_cfg, dict(type='Sigmoid')))
+                        act_cfg=(self.act_cfg, dict(type='ReLU'))) ##changed from sigmoid
                 if block_type == 1:  # edge tpu
                     if i > 0 and expand_ratio == 3:
                         with_residual = False
@@ -368,7 +368,7 @@ class EfficientNet(BaseModule):
                         se_cfg = dict(
                             channels=mid_channels,
                             ratio=se_ratio * expand_ratio,
-                            act_cfg=(self.act_cfg, dict(type='Sigmoid')))
+                            act_cfg=(self.act_cfg, dict(type='ReLU'))) ## changed from sigmoid
                     block = partial(EdgeResidual, with_residual=with_residual)
                 else:
                     block = InvertedResidual

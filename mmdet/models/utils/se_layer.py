@@ -56,7 +56,7 @@ class SELayer(BaseModule):
         out = self.global_avgpool(x)
         out = self.conv1(out)
         out = self.conv2(out)
-        return x * out
+        return x + out
 
 
 class DyReLU(BaseModule):
