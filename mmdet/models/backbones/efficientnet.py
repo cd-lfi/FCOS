@@ -379,7 +379,7 @@ class EfficientNet(BaseModule):
                         mid_channels=mid_channels,
                         kernel_size=kernel_size,
                         stride=stride,
-                        se_cfg=se_cfg,
+                        se_cfg=None,
                         conv_cfg=self.conv_cfg,
                         norm_cfg=self.norm_cfg,
                         act_cfg=self.act_cfg,
